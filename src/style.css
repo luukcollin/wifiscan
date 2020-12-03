@@ -1,6 +1,11 @@
 li :hover {
-  background-color: aqua;
-  color: green;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  background-color: grey;
+}
+li {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .list-item {
@@ -12,13 +17,26 @@ li :hover {
 .help-text {
 }
 
+.scan-button {
+  width: 6%;
+  height: 3%;
+  background-color: red;
+  border-color: yellow;
+  border-width: 1px;
+  border-style: double;
+}
+
 text {
   font-size: 12px;
   font-weight: lighter;
 }
 
-.allblack {
-  background-color: black;
+.selected {
+  color: blue;
+  background-color: wheat;
+}
+
+.non-selected {
+  background-color: white;
   color: black;
-  border-color: black;
 }

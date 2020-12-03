@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
-import Network from "./Network";
 import RealNetwork from "./RealNetwork";
 
 ReactDOM.render(
