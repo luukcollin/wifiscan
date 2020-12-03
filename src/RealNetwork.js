@@ -61,14 +61,11 @@ class RealNetwork extends Component {
 
   getSignalImage(strength) {
     if (strength <= WEAK_SIGNAL) {
-      return "Weak";
-      return "../public/img/strongSignal.png";
+      return "/img/weakSignal.png";
     } else if (strength > MEDIUM_SIGNAL) {
-      return "Strong";
-      return "/../public/img/strongSignal.png";
+      return "/img/strongSignal.png";
     } else {
-      return "Medium";
-      return "/../public/img/strongSignal.png";
+      return "/img/mediumSignal.png";
     }
   }
 
@@ -95,11 +92,17 @@ class RealNetwork extends Component {
                 }}
               >
                 <li className="list-item">
-                  <h3>
-                    {this.getSignalImage(network.strength)} {network.ssid}
-                    {"   "}
-                    {network.encryption}
-                  </h3>
+                  <div className="network-item">
+                    <h4>
+                      <img
+                        className="wifi-icon"
+                        src={this.getSignalImage(network.strength)}
+                      />
+                      {network.ssid}
+                      {"   "}
+                      {network.encryption}
+                    </h4>
+                  </div>
                 </li>
               </div>
             );
