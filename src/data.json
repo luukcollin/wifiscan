@@ -1,0 +1,19 @@
+{
+    "networks": [
+      {
+        "ssid": "Interniet",
+        "strength": 22,
+        "encryption": "WPA2"
+      },
+      {
+        "ssid": "Juicy Wifi",
+        "strength": 100,
+        "encryption": "WEP"
+      },
+      {
+        "ssid": "Hotspot",
+        "strength": 69,
+        "encryption": "WPA"
+      }
+    ]
+  }

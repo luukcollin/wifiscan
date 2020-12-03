@@ -1,0 +1,24 @@
+li :hover {
+  background-color: aqua;
+  color: green;
+}
+
+.list-item {
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+.help-text {
+}
+
+text {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.allblack {
+  background-color: black;
+  color: black;
+  border-color: black;
+}
