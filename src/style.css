@@ -23,6 +23,16 @@ header {
   display: flex;
 }
 
+.ports-list {
+  display: inline-flex;
+}
+
+.ports {
+  background-color: lightgreen;
+  display: flex;
+  margin-top: 50%;
+}
+
 .passwordstrengthmeter {
   display: flex;
   justify-content: space-between;

@@ -63,6 +63,7 @@ class Output extends Component {
       protection: "",
       openPorts: [],
       services: [],
+      sheet: "",
     },
   };
 
@@ -83,6 +84,22 @@ class Output extends Component {
     this.state.services = services;
     console.log(this.state.openPorts);
     console.log(this.state.services);
+  }
+
+  componentDidMount() {
+    console.log(this.state.openPorts);
+    this.renderPorts();
+  }
+
+  renderPorts() {
+    let i = 0;
+    let sheet = "";
+    for (i < this.state.openPorts.length; i++; ) {
+      sheet += <p>ports: {this.state.openPorts[i]}</p>;
+    }
+
+    this.setState({ sheet: sheet });
+    return sheet;
   }
 
   getRandomNumber() {
@@ -134,6 +151,7 @@ class Output extends Component {
                     </Pie>
                   </PieChart>
                 </div>
+
                 <div className="upper-section">
                   <h2>Encryption (Yours: {this.state.protection}): </h2>
 
@@ -220,6 +238,21 @@ class Output extends Component {
               <RealPasswordStrengthMeter
                 percentage={this.state.points}
               ></RealPasswordStrengthMeter>
+            </div>
+            <div className="ports">
+              <h2>Open Ports: </h2>
+              <div class="ports-list">
+                <ul>
+                  {this.state.openPorts.map((value, index) => {
+                    return <li key={index}>{value}</li>;
+                  })}
+                </ul>
+                <ul>
+                  {this.state.services.map((value, index) => {
+                    return <li key={index}>{value}</li>;
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
