@@ -1,0 +1,8 @@
+{
+    "wireless": [
+        {
+            "ssid": "Wi-Fi Rijkhoff",
+            "protocol" : "WPA2"
+        }
+    ]
+}

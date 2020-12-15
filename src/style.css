@@ -8,6 +8,38 @@ li {
   padding-bottom: 0;
 }
 
+header {
+  text-align: center;
+  margin: 2px 2px 2px 2px;
+  background-color: khaki;
+}
+
+.meterwrapper {
+  justify-content: space-between;
+  background-color: lightblue;
+}
+
+.components-view {
+  display: flex;
+}
+
+.passwordstrengthmeter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.upper-section-mobile {
+  background-color: khaki;
+  display: inline-block;
+  background-color: lightgoldenrodyellow;
+}
+
+.upper-section {
+  background-color: khaki;
+  display: inline-flex;
+  background-color: lightgoldenrodyellow;
+}
+
 .list-item {
   border-width: 2px;
   border-style: solid;
@@ -49,4 +81,33 @@ text {
 .non-selected {
   background-color: white;
   color: black;
+}
+
+.bar {
+  position: relative;
+  height: 20px;
+  width: 350px;
+  border-radius: 25px;
+  border: 1px solid #f5f5f5;
+}
+
+.filler-red {
+  background: red;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease-in;
+}
+
+.filler-green {
+  background: green;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease-in;
+}
+
+.filler-orange {
+  background: orange;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease-in;
 }

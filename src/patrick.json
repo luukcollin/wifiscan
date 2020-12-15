@@ -1,0 +1,1 @@
+{"192.168.1.26": {"hostnames": [{"name": "RPI", "type": "PTR"}], "addresses": {"ipv4": "192.168.1.26"}, "vendor": {}, "status": {"state": "up", "reason": "localhost-response"}, "tcp": {"22": {"state": "open", "reason": "syn-ack", "name">

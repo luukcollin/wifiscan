@@ -1,0 +1,81 @@
+{
+    "192.168.68.1": {
+        "osmatch": {},
+        "ports": [
+            {
+                "protocol": "tcp",
+                "portid": "22",
+                "state": "open",
+                "reason": "syn-ack",
+                "reason_ttl": "64",
+                "service": {
+                    "name": "ssh",
+                    "method": "table",
+                    "conf": "3"
+                },
+                "scripts": []
+            },
+            {
+                "protocol": "tcp",
+                "portid": "53",
+                "state": "open",
+                "reason": "syn-ack",
+                "reason_ttl": "57",
+                "service": {
+                    "name": "domain",
+                    "method": "table",
+                    "conf": "3"
+                },
+                "scripts": []
+            },
+            {
+                "protocol": "tcp",
+                "portid": "1900",
+                "state": "open",
+                "reason": "syn-ack",
+                "reason_ttl": "64",
+                "service": {
+                    "name": "upnp",
+                    "method": "table",
+                    "conf": "3"
+                },
+                "scripts": []
+            },
+            {
+                "protocol": "tcp",
+                "portid": "30000",
+                "state": "open",
+                "reason": "syn-ack",
+                "reason_ttl": "64",
+                "service": {
+                    "name": "ndmps",
+                    "method": "table",
+                    "conf": "3"
+                },
+                "scripts": []
+            }
+        ],
+        "hostname": [],
+        "macaddress": null,
+        "state": {
+            "state": "up",
+            "reason": "arp-response",
+            "reason_ttl": "0"
+        }
+    },
+    "stats": {
+        "scanner": "nmap",
+        "args": "/usr/bin/nmap -oX - -Pn 192.168.68.1",
+        "start": "1608028214",
+        "startstr": "Tue Dec 15 11:30:14 2020",
+        "version": "7.70",
+        "xmloutputversion": "1.04"
+    },
+    "runtime": {
+        "time": "1608028217",
+        "timestr": "Tue Dec 15 11:30:17 2020",
+        "elapsed": "2.34",
+        "summary": "Nmap done at Tue Dec 15 11:30:17 2020; 1 IP address (1 host up) scanned in 2.34 seconds",
+        "exit": "success"
+    }
+}

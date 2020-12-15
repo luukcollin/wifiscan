@@ -1,19 +1,27 @@
 {
-    "networks": [
+    "networks": [ 
       {
         "ssid": "Interniet",
         "strength": 22,
-        "encryption": "WPA2"
+        "encryption": "WPA2",
+        "129,.492" : "nmap"
+
       },
       {
         "ssid": "Juicy Wifi",
         "strength": 100,
-        "encryption": "WEP"
+        "encryption": "WEP",
+        "129,.492" : "nmap"
       },
       {
         "ssid": "Hotspot",
         "strength": 69,
-        "encryption": "WPA"
+        "encryption": "WPA",
+        "129,.492" : "nmap"
+      },
+      { 
+        "juicy": "kitty",
+        "meow": "prrr"
       }
     ]
   }

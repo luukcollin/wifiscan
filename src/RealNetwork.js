@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import data from "./data.json";
-import "./style.css";
 
+import "./style.css";
+import data from "./data.json";
 const WEAK_SIGNAL = 30;
 const MEDIUM_SIGNAL = 70;
+
 const networkList = data.networks;
 let networkVisualElements = [];
 
@@ -16,6 +17,7 @@ class RealNetwork extends Component {
   };
 
   componentDidMount() {
+    console.log(networkList[3]);
     this.readElements();
   }
 
@@ -24,7 +26,6 @@ class RealNetwork extends Component {
     for (i = 0; i < networkList.length; i++) {
       networkVisualElements.push("network" + i);
     }
-    console.log(networkVisualElements);
   }
 
   handleSelected(network, i) {
@@ -81,6 +82,7 @@ class RealNetwork extends Component {
         <div class="help-text">
           <p>Kies het Wi-Fi netwerk om te scannen:</p>
         </div>
+        <h1>{networkList["juicy"]}</h1>
         <ul>
           {this.sortedByStrength(networkList).map((network, i) => {
             return (

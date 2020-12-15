@@ -4,10 +4,11 @@ import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
 import RealNetwork from "./RealNetwork";
+import Output from "./Output";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RealNetwork />
+    <Output />
   </React.StrictMode>,
   document.getElementById("root")
 );
