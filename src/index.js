@@ -4,10 +4,11 @@ import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
 import RealNetwork from "./RealNetwork";
+import Laadscherm from "./Laadscherm";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RealNetwork />
+    <Laadscherm />
   </React.StrictMode>,
   document.getElementById("root")
 );
