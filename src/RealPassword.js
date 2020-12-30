@@ -1,22 +1,44 @@
 import React, { Component } from "react";
 
+const common_passwords = [
+  "123456",
+  "password",
+  "12345678",
+  "qwerty",
+  "123456789",
+  "12345",
+  "111111",
+  "1234567",
+  "dragon",
+  "123123",
+  "baseball",
+  "abc123",
+  "football",
+  "letmein",
+  "monkey",
+  "696969",
+  "shadow",
+  "master",
+  "666666",
+  "qwertyuiop",
+  "123321",
+];
+
 const MAX_POINTS = 100;
 const CONTAINS_ALPHANUMERIC = 3;
 const CONTAINS_SPECIAL_CHAR = 1;
 const CONTAINS_NUMBER = 1;
+const LENGTH_MULTIPLIER = 1.2;
 
 class RealPassword extends Component {
   state = {
     password: "",
+    alert: "",
   };
 
   setPassword(password) {
     this.setState({ password: password });
     this.state.password = password;
-  }
-
-  hasRequiredLength() {
-    return this.state.password.length >= 8;
   }
 
   hasAlpha() {
@@ -46,17 +68,34 @@ class RealPassword extends Component {
     return this.hasAlpha() ? CONTAINS_ALPHANUMERIC : 0;
   }
 
+  setAlert() {
+    if (this.isCommonPassword()) {
+      this.setState({
+        alert: "Password is in the list of 100.000 most used passwords!",
+      });
+    }
+    console.log(this.state.alert);
+  }
+
+  isCommonPassword() {
+    return common_passwords.indexOf(this.state.password) > -1 ? 0 : 1;
+  }
+
   getPoints() {
     return (this.countPointsSpecialChar() +
       this.countPointsAlphanumeric() +
+      this.hasCapitalAlpha() +
       this.countPointsNumber()) *
-      Math.pow(this.state.password.length, 1.3) >
+      Math.pow(this.state.password.length, LENGTH_MULTIPLIER) *
+      this.isCommonPassword() >
       MAX_POINTS
       ? MAX_POINTS
       : (this.countPointsSpecialChar() +
           this.countPointsAlphanumeric() +
+          this.hasCapitalAlpha() +
           this.countPointsNumber()) *
-          Math.pow(this.state.password.length, 1.3);
+          Math.pow(this.state.password.length, LENGTH_MULTIPLIER) *
+          this.isCommonPassword();
   }
 }
 

@@ -1,0 +1,80 @@
+{
+    "scan": {
+        "osmatch": [
+            {
+                "name": "OpenWrt Chaos Calmer 15.05 (Linux 3.18) or Designated Driver (Linux 4.1 or 4.4)",
+                "accuracy": "100",
+                "line": "66735",
+                "osclass": {
+                    "type": "WAP",
+                    "vendor": "Linux",
+                    "osfamily": "Linux",
+                    "osgen": "4.X",
+                    "accuracy": "100"
+                },
+                "cpe": "cpe:/o:linux:linux_kernel:4.1"
+            }
+        ],
+        "ports": [
+            {
+                "protocol": "tcp",
+                "portid": "22",
+                "state": "open",
+                "reason": "syn-ack",
+                "reason_ttl": "64",
+                "service": {
+                    "name": "ssh",
+                    "method": "table",
+                    "conf": "3"
+                },
+                "scripts": []
+            },
+            {
+                "protocol": "tcp",
+                "portid": "53",
+                "state": "open",
+                "reason": "syn-ack",
+                "reason_ttl": "57",
+                "service": {
+                    "name": "domain",
+                    "method": "table",
+                    "conf": "3"
+                },
+                "scripts": []
+            },
+            {
+                "protocol": "tcp",
+                "portid": "1900",
+                "state": "open",
+                "reason": "syn-ack",
+                "reason_ttl": "64",
+                "service": {
+                    "name": "upnp",
+                    "method": "table",
+                    "conf": "3"
+                },
+                "scripts": []
+            },
+            {
+                "protocol": "tcp",
+                "portid": "30000",
+                "state": "open",
+                "reason": "syn-ack",
+                "reason_ttl": "64",
+                "service": {
+                    "name": "ndmps",
+                    "method": "table",
+                    "conf": "3"
+                },
+                "scripts": []
+            }
+        ],
+        "hostname": [],
+        "macaddress": null,
+        "state": {
+            "state": "up",
+            "reason": "arp-response",
+            "reason_ttl": "0"
+        }
+    }
+}

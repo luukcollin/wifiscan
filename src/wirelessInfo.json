@@ -2,7 +2,10 @@
     "wireless": [
         {
             "ssid": "Wi-Fi Rijkhoff",
-            "protocol" : "WPA2"
+            "protocol" : "WPA2",
+            "authenticatie": "Authenticatie Suites (1) : PSK",
+            "pairwiseChipper" : "Group Cipher : TKIP",
+            "signalStrength": "Quality=56/70"
         }
     ]
 }
