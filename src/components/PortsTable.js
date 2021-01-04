@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Table } from "react-bootstrap";
 
 const thArray = ["Ports Nr.", "Service", "Approval"];
-const tdArray = [
-  ["1", "open"],
-  ["2", "closed"],
-];
+
 const icons = ["./img/pass.png", "img/fail.png"];
 
 class PortsTable extends Component {

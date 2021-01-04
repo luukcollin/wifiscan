@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 const STRONG = 80;
 const WEAK = 40;
-const COLORS = ["filler-red", "filler-orange", "filler-green"];
 
 class RealPasswordStrengthMeter extends Component {
   constructor(props) {

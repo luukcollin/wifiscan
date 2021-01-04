@@ -29,7 +29,7 @@ span {
 
 header {
   text-align: center;
-
+  width: 100%;
   background-color: black;
 }
 
@@ -64,6 +64,13 @@ text tspan {
   font-size: 22px;
 }
 
+
+
+.sidebar {
+  width: 100%;
+  min-width: 100%;
+}
+
 .overflow {
   height: 20;
   overflow: hidden;
@@ -75,8 +82,7 @@ text tspan {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  justify-content: space-evenly;
 }
 
 .biplaneColumn {
@@ -88,8 +94,15 @@ text tspan {
 
 .container {
   text-align: center;
-  padding-bottom: 32px;
+  float: right;
   background-color: black;
+  min-height: 100%;
+  min-width: 84%;
+}
+
+.layout {
+  width: 100%;
+  background-color: burlywood;
 }
 
 .vbox {
@@ -136,9 +149,6 @@ text tspan {
 .meterwrapper {
   justify-content: space-between;
   background-color: lightblue;
-}
-
-.components-view {
 }
 
 .ports-list {
@@ -248,6 +258,20 @@ text tspan {
   background-color: yellow;
 }
 
+.sidemenu {
+  position: absolute;
+  margin-left: 0;
+  margin-top: 0;
+  float: left;
+  width: 16%;
+
+  background-color: blueviolet;
+}
+
+.sidebar {
+  position: relative;
+  float: left;
+}
 /* BOOTSTRAP START */
 
 .card-stats .icon-big {
@@ -264,7 +288,7 @@ text tspan {
 .card:hover {
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(2, 169, 247, 0.9), 0 0 0 1px rgba(2, 87, 122, 0.3);
-  background-color: #d4fffc;
+  background-color: blue;
   margin-bottom: 30px;
 }
 

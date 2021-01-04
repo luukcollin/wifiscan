@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-
 const common_passwords = [
   "123456",
   "password",
@@ -30,7 +28,7 @@ const CONTAINS_SPECIAL_CHAR = 1;
 const CONTAINS_NUMBER = 1;
 const LENGTH_MULTIPLIER = 1.2;
 
-class RealPassword extends Component {
+class RealPassword {
   state = {
     password: "",
     alert: "",

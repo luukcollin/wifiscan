@@ -1,30 +1,27 @@
-import React, { Component, Fragment, TouchableOpacity } from "react";
-
+import React, { Component, Fragment } from "react";
+import "react-pro-sidebar/dist/css/styles.css";
+import Navbar from "./components/Navbar";
 import wirelessInfo from "./wirelessInfo.json";
-
 import nmapOutput from "./gatewaydiscover.json";
+import "./style.css";
 import { BrowserView, MobileView } from "react-device-detect";
 import RealPassword from "./RealPassword";
 import ChartsCard from "./components/ChartsCard";
 import PortsTable from "./components/PortsTable";
-import ChartistGraph from "react-chartist";
+
 import {
   PieChart,
   Pie,
-  Sector,
   Cell,
   Label,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
   BarChart,
   Legend,
   Bar,
 } from "recharts";
 import { Container, Row, Col, Table } from "react-bootstrap";
 import RealPasswordStrengthMeter from "./RealPasswordStrengthMeter";
-import { Content } from "antd/lib/layout/layout";
 
 const nmapData = nmapOutput["scan"];
 const wirelessInformation = wirelessInfo.wireless;
@@ -39,7 +36,8 @@ const dataBarChart = [
   { name: "WEP", Strength: 15 },
 ];
 
-const COLORS = ["#0088FE", "#ffffff"];
+const PIECHART_COLORS = ["#0088FE", "#ffffff"];
+const datetime = new Date();
 let passwordObject;
 class Output extends Component {
   constructor(props) {
@@ -124,6 +122,13 @@ class Output extends Component {
     this.renderPorts();
   }
 
+  handleString(input, altMessage) {
+    if (input.length == 0) {
+      return altMessage;
+    }
+    return input;
+  }
+
   renderPorts() {
     let i = 0;
     let sheet = "";
@@ -160,328 +165,241 @@ class Output extends Component {
   }
 
   renderMobile() {
-    return (
-      <div className="container">
-        <header className="">
-          <h1>Output Results</h1>
-        </header>
-        <div className="components-view">
-          <div className="row">
-            <h2>Overall Score of {this.state.wirelessInfo.ssid} </h2>
-
-            <PieChart width={400} height={200} onMouseEnter={this.onPieEnter}>
-              <Pie
-                data={data}
-                cx={210}
-                cy={100}
-                startAngle={-270}
-                endAngle={90}
-                innerRadius={60}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-                blendStroke={true}
-              >
-                <Label fontSize={100} value="75%" position="center" />
-                {data.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-            </PieChart>
-
-            <div className="row">
-              <h2>
-                Encryption (Yours: {this.state.wirelessInfo.protection}):{" "}
-              </h2>
-
-              <BarChart
-                width={600}
-                height={300}
-                data={dataBarChart}
-                layout="vertical"
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <XAxis type="number" />
-                <YAxis type="category" dataKey="name" />
-
-                <Legend />
-                <Bar dataKey="Strength" fill="#8884d8" />
-              </BarChart>
-            </div>
-          </div>
-          <div>
-            <div className="passwordstrengthmeter">
-              <h4>Password Strength Meter: </h4>
-
-              <input
-                placeholder="How strong is your password?"
-                type="text"
-                id="passwordfield"
-                onChange={this.handlePasswordChanged}
-              ></input>
-              <RealPasswordStrengthMeter
-                percentage={this.state.points}
-              ></RealPasswordStrengthMeter>
-            </div>
-            <div className="ports">
-              <h4>Open Ports: </h4>
-              <div class="ports-list">
-                <ul>
-                  {this.state.openPorts.map((value, index) => {
-                    return <li key={index}>{value}</li>;
-                  })}
-                </ul>
-                <ul>
-                  {this.state.services.map((value, index) => {
-                    return <li key={index}>{value}</li>;
-                  })}
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="others">
-            <div className="others-item">
-              <p>Hello 1</p>
-              <p>Lower text</p>
-            </div>
-            <div className="arrow-button">
-              <img className="wifi-icon" src="./img/strongSignal.png" />
-            </div>
-          </div>
-
-          <div className="others-item">
-            <p>Hello 2</p>
-            <p>Lower text</p>
-            <img src="./img/strongSignal.png" />
-          </div>
-          <div className="others-item">
-            <p>Hello 2</p>
-            <p>Lower text</p>
-            <img src="./img/strongSignal.png" className="arrow-button" />
-          </div>
-        </div>
-        <div className="meterwrapper"></div>
-      </div>
-    );
+    return <div className="container"></div>;
   }
 
   renderBrowser() {
     return (
-      <div className="container">
-        <header>
-          <img src="./img/cw-logo.png" alt="Cyberwerf Logo"></img>
-          <h1>Output Results</h1>
-        </header>
-        <div className="components-view">
-          <Fragment>
-            <BrowserView>
-              <div className="row">
-                <Container fluid>
-                  <Row>
-                    <Col>
-                      <h2>Overall Score of {this.state.wirelessInfo.ssid} </h2>
-
-                      <PieChart
-                        width={400}
-                        height={200}
-                        onMouseEnter={this.onPieEnter}
-                      >
-                        <Pie
-                          data={data}
-                          cx={200}
-                          cy={100}
-                          startAngle={-270}
-                          endAngle={90}
-                          innerRadius={60}
-                          outerRadius={80}
-                          fill="#8884d8"
-                          dataKey="value"
-                          blendStroke={true}
-                        >
-                          <Label fontSize={100} value="75%" position="center" />
-                          {data.map((entry, index) => (
-                            <Cell
-                              key={`cell-${index}`}
-                              fill={COLORS[index % COLORS.length]}
-                            />
-                          ))}
-                        </Pie>
-                      </PieChart>
-                      <div className="allblue"></div>
-                    </Col>
-
-                    <Col>
-                      <h2>
-                        Encryption (Yours: {this.state.wirelessInfo.protection}
-                        ):{" "}
-                      </h2>
-                      <BarChart
-                        width={600}
-                        height={300}
-                        data={dataBarChart}
-                        layout="vertical"
-                        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                      >
-                        <XAxis type="number" />
-                        <YAxis type="category" dataKey="name" />
-
-                        <Legend />
-                        <Bar stackId="a" dataKey="Strength">
-                          {dataBarChart.map((entry, index) => (
-                            <Cell
-                              fill={
-                                entry.name ===
-                                this.state.wirelessInfo.protection
-                                  ? "#11ccee"
-                                  : "#3311ff"
-                              }
-                            />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                      <div className="allgreen"></div>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <div className="ports">
-                        <PortsTable
-                          thArray={["port nr", "status"]}
-                          tdArray={this.state.openPorts}
-                          services={this.state.services}
-                        ></PortsTable>
-                      </div>
-                    </Col>
-
-                    <Col className="biplaneColumn">
-                      <Table hover>
-                        <thead>
-                          <tr>
-                            <th>SSID</th>
-                            <th>Protection</th>
-                            <th>authentication</th>
-                            <th>Pairwise Chipper</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div className="overflow">
-                                {this.state.wirelessInfo.ssid}
-                              </div>
-                            </td>
-                            <td>
-                              <div className="overflow">
-                                {this.state.wirelessInfo.protection}
-                              </div>
-                            </td>
-                            <td>
-                              <div className="overflow">
-                                {this.state.wirelessInfo.authentication}
-                              </div>
-                            </td>
-                            <td>
-                              <div className="overflow">
-                                {this.state.wirelessInfo.pairwiseChipper}
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </Table>
-                      <Table hover>
-                        <thead>
-                          <tr>
-                            <th>Router Name</th>
-                            <th>Operating System</th>
-                            <th>Accuracy</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div className="overflow">
-                                {this.state.routerInfo.name}
-                              </div>
-                            </td>
-                            <td>
-                              <div className="overflow">
-                                {this.state.routerInfo.os}
-                              </div>
-                            </td>
-                            <td>
-                              <div className="overflow">
-                                {this.state.routerInfo.accuracy}
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </Table>
-                      <div className="passwordstrengthmeter">
-                        <h4>Password Strength Meter: </h4>
-
-                        <input
-                          placeholder="How strong is your password?"
-                          type="text"
-                          id="passwordfield"
-                          onChange={this.handlePasswordChanged}
-                        ></input>
-                        <RealPasswordStrengthMeter
-                          percentage={this.state.points}
-                        ></RealPasswordStrengthMeter>
-                      </div>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <ChartsCard
-                        geslaagd={true}
-                        statsText="Item title 1"
-                        description="Some information about the item"
-                        readMore={false}
-                      />
-                    </Col>
-                    <Col>
-                      <ChartsCard
-                        geslaagd={false}
-                        statsText="Item title 2"
-                        description="Some information about the item"
-                        readMore={true}
-                        readMoreLinkTo={"https://google.com"}
-                      />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <ChartsCard
-                        geslaagd={false}
-                        statsText="Item title 3"
-                        description="Some information about the item"
-                        readMore={true}
-                        readMoreLinkTo={"https://google.com"}
-                      />
-                    </Col>
-                    <Col>
-                      <ChartsCard
-                        geslaagd={true}
-                        statsText="Item title 4"
-                        description="Some information about the item"
-                      />
-                    </Col>
-                  </Row>
-
-                  <Row></Row>
-                </Container>
-
-                <div className="row"></div>
-              </div>
-              <div></div>
-            </BrowserView>
-          </Fragment>
+      <div className="layout">
+        <div class="sidemenu">
+          <Navbar></Navbar>
         </div>
-        <div className="meterwrapper"></div>
+        <div className="container">
+          <header>
+            <p>Scan resultaat van {datetime.toLocaleString()}</p>
+            <img src="./img/cw-logo.png" alt="Cyberwerf Logo"></img>
+            <h1>Output Results</h1>
+          </header>
+
+          <div>
+            <Fragment>
+              <BrowserView>
+                <div className="row">
+                  <Container fluid>
+                    <Row>
+                      <Col>
+                        <h2>
+                          Overall Score of {this.state.wirelessInfo.ssid}{" "}
+                        </h2>
+
+                        <PieChart
+                          width={400}
+                          height={200}
+                          onMouseEnter={this.onPieEnter}
+                        >
+                          <Pie
+                            data={data}
+                            cx={200}
+                            cy={100}
+                            startAngle={-270}
+                            endAngle={90}
+                            innerRadius={60}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            blendStroke={true}
+                          >
+                            <Label
+                              fontSize={100}
+                              value="75%"
+                              position="center"
+                            />
+                            {data.map((entry, index) => (
+                              <Cell
+                                key={`cell-${index}`}
+                                fill={
+                                  PIECHART_COLORS[
+                                    index % PIECHART_COLORS.length
+                                  ]
+                                }
+                              />
+                            ))}
+                          </Pie>
+                        </PieChart>
+                        <div className="allblue"></div>
+                      </Col>
+
+                      <Col>
+                        <h2>
+                          Encryption (Yours:{" "}
+                          {this.state.wirelessInfo.protection}
+                          ):{" "}
+                        </h2>
+                        <BarChart
+                          width={600}
+                          height={300}
+                          data={dataBarChart}
+                          layout="vertical"
+                          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                        >
+                          <XAxis type="number" />
+                          <YAxis type="category" dataKey="name" />
+
+                          <Legend />
+                          <Bar stackId="a" dataKey="Strength">
+                            {dataBarChart.map((entry, index) => (
+                              <Cell
+                                fill={
+                                  entry.name ===
+                                  this.state.wirelessInfo.protection
+                                    ? "#11ccee"
+                                    : "#3311ff"
+                                }
+                              />
+                            ))}
+                          </Bar>
+                        </BarChart>
+                        <div className="allgreen"></div>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <div className="ports">
+                          <PortsTable
+                            thArray={["port nr", "status"]}
+                            tdArray={this.state.openPorts}
+                            services={this.state.services}
+                          ></PortsTable>
+                        </div>
+                      </Col>
+
+                      <Col className="biplaneColumn">
+                        <Table hover>
+                          <thead>
+                            <tr>
+                              <th>SSID</th>
+                              <th>Protection</th>
+                              <th>authentication</th>
+                              <th>Pairwise Chipper</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <div className="overflow">
+                                  {this.state.wirelessInfo.ssid}
+                                </div>
+                              </td>
+                              <td>
+                                <div className="overflow">
+                                  {this.state.wirelessInfo.protection}
+                                </div>
+                              </td>
+                              <td>
+                                <div className="overflow">
+                                  {this.state.wirelessInfo.authentication}
+                                </div>
+                              </td>
+                              <td>
+                                <div className="overflow">
+                                  {this.state.wirelessInfo.pairwiseChipper}
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </Table>
+                        <Table hover>
+                          <thead>
+                            <tr>
+                              <th>Router Name</th>
+                              <th>Operating System</th>
+                              <th>Accuracy</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <div className="overflow">
+                                  {this.state.routerInfo.name}
+                                </div>
+                              </td>
+                              <td>
+                                <div className="overflow">
+                                  {this.state.routerInfo.os}
+                                </div>
+                              </td>
+                              <td>
+                                <div className="overflow">
+                                  {this.state.routerInfo.accuracy + "%"}
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </Table>
+                        <div className="passwordstrengthmeter">
+                          <h4>Password Strength Meter: </h4>
+
+                          <input
+                            placeholder="How strong is your password?"
+                            type="text"
+                            id="passwordfield"
+                            onChange={this.handlePasswordChanged}
+                          ></input>
+                          <RealPasswordStrengthMeter
+                            percentage={this.state.points}
+                          ></RealPasswordStrengthMeter>
+                        </div>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <ChartsCard
+                          geslaagd={true}
+                          statsText="Item title 1"
+                          description="Some information about the item"
+                          readMore={false}
+                        />
+                      </Col>
+                      <Col>
+                        <ChartsCard
+                          geslaagd={false}
+                          statsText="Item title 2"
+                          description="Some information about the item"
+                          readMore={true}
+                          readMoreLinkTo={"https://google.com"}
+                        />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <ChartsCard
+                          geslaagd={false}
+                          statsText="Item title 3"
+                          description="Some information about the item"
+                          readMore={true}
+                          readMoreLinkTo={"https://google.com"}
+                        />
+                      </Col>
+                      <Col>
+                        <ChartsCard
+                          geslaagd={true}
+                          statsText="Item title 4"
+                          description="Some information about the item"
+                        />
+                      </Col>
+                    </Row>
+
+                    <Row></Row>
+                  </Container>
+
+                  <div className="row"></div>
+                </div>
+                <div></div>
+              </BrowserView>
+            </Fragment>
+            <div className="meterwrapper"></div>
+          </div>
+        </div>
       </div>
     );
   }

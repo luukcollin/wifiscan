@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
+
 const geslaagd = "./img/pass.png";
 const gezakt = "./img/fail.png";
 class ChartsCard extends Component {
