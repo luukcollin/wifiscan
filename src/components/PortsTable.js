@@ -18,11 +18,11 @@ class PortsTable extends Component {
   }
   render() {
     return (
-      <div className="content">
+      <div>
         <Container>
           <Row>
             <Col>
-              <Table hover>
+              <Table className="bg-white text-dark" hover>
                 <thead>
                   <tr>
                     {thArray.map((prop, key) => {

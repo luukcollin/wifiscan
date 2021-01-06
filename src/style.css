@@ -51,7 +51,11 @@ text tspan {
 }
 
 tr {
-  color: #fffff0;
+  color: black;
+}
+
+Table {
+  min-width: 500px;
 }
 
 text {
@@ -313,6 +317,9 @@ text tspan {
 }
 
 .card-icon {
+  position: absolute;
+  top: 12px;
+  left: 18px;
   width: 60px;
   height: 60px;
 }
@@ -321,7 +328,53 @@ text tspan {
   width: 90%;
 }
 
+.compact-card {
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(2, 169, 247, 0.9), 0 0 0 1px rgba(2, 87, 122, 0.3);
+  background-color: lightblue;
+  max-width: 200px;
+}
+
+.componentwidth{
+  max-width: 50rem;
+
+  background-color: lawngreen;
+}
+
+.compact-card-border {
+  border-radius: 4px;
+  
+  background-color: red;
+  padding: 30px;
+  
+  
+}
+
+.component {
+
+  min-width: 400px;
+  background-color: khaki;
+}
+
+.compact-card-component {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.textarea {
+  background-color: black;
+  border:lightseagreen;
+  border-width: 2px;
+  border-style: groove;
+  margin: 6 6 6 6;
+  
+}
+
 Table img {
   width: 30px;
   height: 30px;
 }
+

@@ -8,6 +8,7 @@ import { BrowserView, MobileView } from "react-device-detect";
 import RealPassword from "./RealPassword";
 import ChartsCard from "./components/ChartsCard";
 import PortsTable from "./components/PortsTable";
+import CompactCard from "./components/CompactCard";
 
 import {
   PieChart,
@@ -182,6 +183,42 @@ class Output extends Component {
           </header>
 
           <div>
+            <CompactCard geslaagd={false}>
+              <Table className="compact-card-component">
+                <thead>
+                  <PortsTable
+                    thArray={["port nr", "status"]}
+                    tdArray={this.state.openPorts}
+                    services={this.state.services}
+                  ></PortsTable>
+                </thead>
+              </Table>
+            </CompactCard>
+            <CompactCard geslaagd={true}>
+              <BarChart
+                width={600}
+                height={300}
+                data={dataBarChart}
+                layout="vertical"
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              >
+                <XAxis type="number" />
+                <YAxis type="category" dataKey="name" />
+
+                <Legend />
+                <Bar stackId="a" dataKey="Strength">
+                  {dataBarChart.map((entry, index) => (
+                    <Cell
+                      fill={
+                        entry.name === this.state.wirelessInfo.protection
+                          ? "#11ccee"
+                          : "#3311ff"
+                      }
+                    />
+                  ))}
+                </Bar>
+              </BarChart>
+            </CompactCard>
             <Fragment>
               <BrowserView>
                 <div className="row">

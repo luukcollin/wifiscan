@@ -21,7 +21,7 @@ class ChartsCard extends Component {
       <div className="card card-stats">
         <div className="content">
           <Row>
-            <Col xs={5}>
+            <Col xs={2}>
               <div className="icon-big text-center icon-warning">
                 <img
                   className="card-icon"
@@ -31,7 +31,7 @@ class ChartsCard extends Component {
                 {this.props.icon}
               </div>
             </Col>
-            <Col xs={5}>
+            <Col xs={10}>
               <div className="numbers">
                 <span>{this.props.statsText}</span>
                 <p>
