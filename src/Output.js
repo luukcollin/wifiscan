@@ -183,42 +183,6 @@ class Output extends Component {
           </header>
 
           <div>
-            <CompactCard geslaagd={false}>
-              <Table className="compact-card-component">
-                <thead>
-                  <PortsTable
-                    thArray={["port nr", "status"]}
-                    tdArray={this.state.openPorts}
-                    services={this.state.services}
-                  ></PortsTable>
-                </thead>
-              </Table>
-            </CompactCard>
-            <CompactCard geslaagd={true}>
-              <BarChart
-                width={600}
-                height={300}
-                data={dataBarChart}
-                layout="vertical"
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <XAxis type="number" />
-                <YAxis type="category" dataKey="name" />
-
-                <Legend />
-                <Bar stackId="a" dataKey="Strength">
-                  {dataBarChart.map((entry, index) => (
-                    <Cell
-                      fill={
-                        entry.name === this.state.wirelessInfo.protection
-                          ? "#11ccee"
-                          : "#3311ff"
-                      }
-                    />
-                  ))}
-                </Bar>
-              </BarChart>
-            </CompactCard>
             <Fragment>
               <BrowserView>
                 <div className="row">
@@ -267,51 +231,55 @@ class Output extends Component {
                       </Col>
 
                       <Col>
+                        <CompactCard geslaagd={false}>
+                          <Table className="compact-card-component">
+                            <thead>
+                              <PortsTable
+                                thArray={["port nr", "status"]}
+                                tdArray={this.state.openPorts}
+                                services={this.state.services}
+                              ></PortsTable>
+                            </thead>
+                          </Table>
+                        </CompactCard>
+                        <CompactCard geslaagd={true}>
+                          <BarChart
+                            width={600}
+                            height={300}
+                            data={dataBarChart}
+                            layout="vertical"
+                            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                          >
+                            <XAxis type="number" />
+                            <YAxis type="category" dataKey="name" />
+
+                            <Legend />
+                            <Bar stackId="a" dataKey="Strength">
+                              {dataBarChart.map((entry, index) => (
+                                <Cell
+                                  fill={
+                                    entry.name ===
+                                    this.state.wirelessInfo.protection
+                                      ? "#11ccee"
+                                      : "#3311ff"
+                                  }
+                                />
+                              ))}
+                            </Bar>
+                          </BarChart>
+                        </CompactCard>
                         <h2>
                           Encryption (Yours:{" "}
                           {this.state.wirelessInfo.protection}
                           ):{" "}
                         </h2>
-                        <BarChart
-                          width={600}
-                          height={300}
-                          data={dataBarChart}
-                          layout="vertical"
-                          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                        >
-                          <XAxis type="number" />
-                          <YAxis type="category" dataKey="name" />
 
-                          <Legend />
-                          <Bar stackId="a" dataKey="Strength">
-                            {dataBarChart.map((entry, index) => (
-                              <Cell
-                                fill={
-                                  entry.name ===
-                                  this.state.wirelessInfo.protection
-                                    ? "#11ccee"
-                                    : "#3311ff"
-                                }
-                              />
-                            ))}
-                          </Bar>
-                        </BarChart>
                         <div className="allgreen"></div>
                       </Col>
                     </Row>
                     <Row>
-                      <Col>
-                        <div className="ports">
-                          <PortsTable
-                            thArray={["port nr", "status"]}
-                            tdArray={this.state.openPorts}
-                            services={this.state.services}
-                          ></PortsTable>
-                        </div>
-                      </Col>
-
                       <Col className="biplaneColumn">
-                        <Table hover>
+                        <Table className="bg-white text-dark">
                           <thead>
                             <tr>
                               <th>SSID</th>
@@ -345,7 +313,7 @@ class Output extends Component {
                             </tr>
                           </tbody>
                         </Table>
-                        <Table hover>
+                        <Table className="bg-white text-dark">
                           <thead>
                             <tr>
                               <th>Router Name</th>
