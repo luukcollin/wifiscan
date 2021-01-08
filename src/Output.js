@@ -1,14 +1,22 @@
 import React, { Component, Fragment } from "react";
 import "react-pro-sidebar/dist/css/styles.css";
 import Navbar from "./components/Navbar";
-import wirelessInfo from "./wirelessInfo.json";
-import nmapOutput from "./gatewaydiscover.json";
+
+import wirelessInfo from "./output/wirelessInfo.json";
+import gatewayDiscover from "./output/gatewaydiscover.json";
+import networkDiscover from "./output/networkdiscover.json";
+
 import "./style.css";
-import { BrowserView, MobileView } from "react-device-detect";
+
 import RealPassword from "./RealPassword";
+import StringStripper from "./StringStripper";
+
+import MacTable from "./components/MacTable";
 import ChartsCard from "./components/ChartsCard";
 import PortsTable from "./components/PortsTable";
 import CompactCard from "./components/CompactCard";
+import WifiSignal from "./components/WifiSignal";
+import RealPasswordStrengthMeter from "./components/RealPasswordStrengthMeter";
 
 import {
   PieChart,
@@ -18,23 +26,25 @@ import {
   XAxis,
   YAxis,
   BarChart,
+  StackedBarChart,
   Legend,
   Bar,
 } from "recharts";
 import { Container, Row, Col, Table } from "react-bootstrap";
-import RealPasswordStrengthMeter from "./RealPasswordStrengthMeter";
+import { BrowserView, MobileView } from "react-device-detect";
 
-const nmapData = nmapOutput["scan"];
+const gatewayData = gatewayDiscover["scan"];
+const networkData = networkDiscover;
 const wirelessInformation = wirelessInfo.wireless;
 const data = [
   { name: "Security Level", value: 75 },
   { name: "100-Security Level", value: 25 },
 ];
 const dataBarChart = [
-  { name: "WPA3", Strength: 100 },
-  { name: "WPA2", Strength: 75 },
-  { name: "WPA(1)", Strength: 40 },
-  { name: "WEP", Strength: 15 },
+  { name: "WPA3", Strength: 100, Aes: 25 },
+  { name: "WPA2", Strength: 75, Aes: 25 },
+  { name: "WPA(1)", Strength: 40, Aes: 25 },
+  { name: "WEP", Strength: 15, Aes: 25 },
 ];
 
 const PIECHART_COLORS = ["#0088FE", "#ffffff"];
@@ -76,45 +86,102 @@ class Output extends Component {
       authentication: "",
       pairwiseChipper: "",
       strength: "",
+      externalIp: "",
     },
     routerInfo: {
       name: "",
       os: "",
       accuracy: "",
     },
+    networkInfo: {
+      ip4: [],
+      macs: [],
+      vendors: [],
+    },
   };
 
   fetchJSON() {
-    this.state.routerInfo.name = nmapData.osmatch[0].name;
-    this.state.routerInfo.os = nmapData.osmatch[0].osclass.vendor;
-    this.state.routerInfo.accuracy = nmapData.osmatch[0].accuracy;
+    let stringStripper = new StringStripper();
+
+    this.state.routerInfo.name = gatewayData.osmatch[0].name;
+    this.state.routerInfo.os = gatewayData.osmatch[0].osclass.vendor;
+    this.state.routerInfo.accuracy = gatewayData.osmatch[0].accuracy;
     console.log("Router os: " + this.state.routerInfo.os);
     console.log("Name of router: " + this.state.routerInfo.name);
     console.log("Accuracy: " + this.state.routerInfo.accuracy + "%");
 
-    this.state.wirelessInfo.authentication =
-      wirelessInformation[0].authenticatie;
+    this.state.wirelessInfo.authentication = stringStripper.stripFrom(
+      wirelessInformation[0].authenticatie,
+      ":",
+      4
+    );
+    console.log(
+      "Chipper:" +
+        stringStripper.stripFrom(wirelessInformation[0].pairwiseChipper, ":")
+    );
     this.state.wirelessInfo.pairwiseChipper =
-      wirelessInformation[0].pairwiseChipper;
-    this.state.wirelessInfo.strength = wirelessInformation[0].signalStrength;
-    console.log("Authenticatie: " + this.state.wirelessInfo.authentication);
+      stringStripper
+        .stripFrom(wirelessInformation[0].pairwiseChipper, ":")
+        .trim() === "CCMP"
+        ? "AES"
+        : stringStripper.stripFrom(wirelessInformation[0].pairwiseChipper, ":");
+
+    this.state.wirelessInfo.strength = stringStripper.stripFrom(
+      stringStripper.stripTill(wirelessInformation[0].signalstrength, "/"),
+      "="
+    );
+    this.state.wirelessInfo.externalIp = wirelessInformation[0].externalIP;
+    console.log(
+      "Authenticatie: " +
+        stringStripper.stripFrom(this.state.wirelessInfo.authentication, ":")
+    );
     console.log("Pairwise Chipper: " + this.state.wirelessInfo.pairwiseChipper);
     console.log("Strength: " + this.state.wirelessInfo.strength);
+    console.log("External Ip: " + this.state.wirelessInfo.externalIp);
 
     console.log(this.state.os);
     wirelessInformation.map(
       (item, i) => (
         (this.state.wirelessInfo.ssid = item.ssid),
-        (this.state.wirelessInfo.protection = item.protocol),
+        (this.state.wirelessInfo.protection = stringStripper.stripFrom(
+          item.protocol,
+          "/",
+          4
+        )),
         this.setState({ ssid: item.ssid })
       )
     );
 
+    let ips = [];
+    let macs = [];
+    let vendors = [];
+    console.log(
+      "Sneaky: " + networkData["scan"]["192.168.68.1"]["addresses"]["ipv4"]
+    );
+
+    var keys = Object.keys(networkData);
+    var amountOfHosts = Object.keys(networkData["scan"]).length;
+    var tagData = Object.keys(networkData["scan"]);
+    for (var i = 0; i < amountOfHosts; i++) {
+      ips.push(tagData[i]);
+      macs.push(networkData["scan"][ips[i]]["addresses"]["mac"]);
+      vendors.push(networkData["scan"][ips[i]].vendor[macs[i]]);
+    }
+
+    console.log("Amount of hosts: " + amountOfHosts);
+    console.log("Ip4s: " + ips);
+    console.log("Macs: " + macs);
+
+    this.state.networkInfo.ip4 = ips;
+    this.state.networkInfo.macs = macs;
+    this.state.networkInfo.vendors = vendors;
+    console.log("Vendors: " + vendors);
+    console.log("Vendors state: " + this.state.networkInfo.vendors);
     let ports = [];
     let services = [];
 
-    nmapData.ports.map((item, i) => ports.push(item.portid));
-    nmapData.ports.map((item, i) => services.push(item.service.name));
+    gatewayData.ports.map((item, i) => ports.push(item.portid));
+    gatewayData.ports.map((item, i) => services.push(item.service.name));
     this.state.openPorts = ports;
     this.state.services = services;
   }
@@ -228,6 +295,11 @@ class Output extends Component {
                           </Pie>
                         </PieChart>
                         <div className="allblue"></div>
+                        <CompactCard>
+                          <WifiSignal
+                            signalStrength={this.state.wirelessInfo.strength}
+                          ></WifiSignal>
+                        </CompactCard>
                       </Col>
 
                       <Col>
@@ -235,10 +307,26 @@ class Output extends Component {
                           <Table className="compact-card-component">
                             <thead>
                               <PortsTable
-                                thArray={["port nr", "status"]}
+                                thArray={["Port Nr", "Status", "Approval"]}
                                 tdArray={this.state.openPorts}
                                 services={this.state.services}
                               ></PortsTable>
+                            </thead>
+                          </Table>
+                        </CompactCard>
+                        <CompactCard geslaagd={true}>
+                          <Table className="compact-card-component">
+                            <thead>
+                              <MacTable
+                                thArray={[
+                                  "IP4 Adress",
+                                  "Mac Adress",
+                                  "Vendors",
+                                ]}
+                                ips={this.state.networkInfo.ip4}
+                                macs={this.state.networkInfo.macs}
+                                vendors={this.state.networkInfo.vendors}
+                              ></MacTable>
                             </thead>
                           </Table>
                         </CompactCard>
@@ -266,13 +354,20 @@ class Output extends Component {
                                 />
                               ))}
                             </Bar>
+                            <Bar stackId="a" dataKey="Aes">
+                              {dataBarChart.map((entry, index) => (
+                                <Cell
+                                  fill={
+                                    entry.name ===
+                                    this.state.wirelessInfo.protection
+                                      ? "#ffffff"
+                                      : "#000000"
+                                  }
+                                />
+                              ))}
+                            </Bar>
                           </BarChart>
                         </CompactCard>
-                        <h2>
-                          Encryption (Yours:{" "}
-                          {this.state.wirelessInfo.protection}
-                          ):{" "}
-                        </h2>
 
                         <div className="allgreen"></div>
                       </Col>
@@ -284,7 +379,7 @@ class Output extends Component {
                             <tr>
                               <th>SSID</th>
                               <th>Protection</th>
-                              <th>authentication</th>
+                              <th>Authentication</th>
                               <th>Pairwise Chipper</th>
                             </tr>
                           </thead>

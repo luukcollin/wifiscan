@@ -1,19 +1,8 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Table } from "react-bootstrap";
 
-const icons = ["./img/pass.png", "img/fail.png"];
-
-class PortsTable extends Component {
-  state = {
-    img: "",
-  };
-
-  componentDidMount() {
-    this.setImageRandom();
-  }
-  setImageRandom() {
-    this.setState({ img: icons[Math.ceil(Math.random() * icons.length) - 1] });
-  }
+class MacTable extends Component {
+  state = {};
   render() {
     return (
       <div>
@@ -29,19 +18,24 @@ class PortsTable extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.tdArray.map((prop, key) => {
+                  {this.props.ips.map((prop, key) => {
                     return (
                       <tr key={key}>
                         <td>{prop}</td>
                         <td>
-                          {this.props.services[key] === undefined ? (
+                          {this.props.macs[key] === undefined ? (
                             <i>Unknown</i>
                           ) : (
-                            this.props.services[key]
+                            this.props.macs[key]
                           )}
                         </td>
+
                         <td>
-                          <img src={this.state.img} alt="fail"></img>
+                          {this.props.vendors[key] === undefined ? (
+                            <i>Unknown</i>
+                          ) : (
+                            this.props.vendors[key]
+                          )}
                         </td>
                       </tr>
                     );
@@ -56,4 +50,4 @@ class PortsTable extends Component {
   }
 }
 
-export default PortsTable;
+export default MacTable;

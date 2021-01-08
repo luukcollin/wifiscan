@@ -1,0 +1,354 @@
+
+{
+    "nmap": {
+        "command_line": "nmap -oX - -sn 192.168.68.1/24",
+        "scaninfo": {},
+        "scanstats": {
+            "timestr": "Wed Jan  6 17:07:11 2021",
+            "elapsed": "4.73",
+            "uphosts": "19",
+            "downhosts": "237",
+            "totalhosts": "256"
+        }
+    },
+    "scan": {
+        "192.168.68.1": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.1",
+                "mac": "74:DA:88:F0:43:A7"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.102": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.102",
+                "mac": "74:DA:88:F0:4E:B0"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.104": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.104",
+                "mac": "A4:CF:12:E6:DC:0D"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.108": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.108",
+                "mac": "74:DA:88:F0:4B:9F"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.109": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.109",
+                "mac": "A8:5E:45:2E:02:22"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.110": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.110",
+                "mac": "76:ED:C3:AA:39:DA"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.111": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.111",
+                "mac": "F0:0F:EC:72:95:BC"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.112": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.112",
+                "mac": "F4:FE:FB:B0:DF:01"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.117": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.117",
+                "mac": "5C:AA:FD:15:53:3E"
+            },
+            "vendor": {
+                "5C:AA:FD:15:53:3E": "Sonos"
+            },
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.118": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.118",
+                "mac": "94:9F:3E:85:BC:AA"
+            },
+            "vendor": {
+                "94:9F:3E:85:BC:AA": "Sonos"
+            },
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.119": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.119",
+                "mac": "5C:AA:FD:83:85:B8"
+            },
+            "vendor": {
+                "5C:AA:FD:83:85:B8": "Sonos"
+            },
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.120": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.120",
+                "mac": "78:28:CA:A3:5B:86"
+            },
+            "vendor": {
+                "78:28:CA:A3:5B:86": "Sonos"
+            },
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.121": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.121",
+                "mac": "48:A6:B8:E1:BD:66"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.123": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.123",
+                "mac": "DE:F7:C7:1E:94:D2"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.127": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.127",
+                "mac": "40:B0:34:5B:36:D1"
+            },
+            "vendor": {
+                "40:B0:34:5B:36:D1": "Hewlett Packard"
+            },
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.129": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.129",
+                "mac": "80:97:1B:00:DE:EA"
+            },
+            "vendor": {
+                "80:97:1B:00:DE:EA": "Altenergy Power System"
+            },
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.130": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.130",
+                "mac": "00:11:32:27:DA:C7"
+            },
+            "vendor": {
+                "00:11:32:27:DA:C7": "Synology Incorporated"
+            },
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.131": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.131",
+                "mac": "94:9F:3E:85:B8:DC"
+            },
+            "vendor": {
+                "94:9F:3E:85:B8:DC": "Sonos"
+            },
+            "status": {
+                "state": "up",
+                "reason": "arp-response"
+            }
+        },
+        "192.168.68.168": {
+            "hostnames": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "addresses": {
+                "ipv4": "192.168.68.168"
+            },
+            "vendor": {},
+            "status": {
+                "state": "up",
+                "reason": "localhost-response"
+            }
+        }
+    }
+}

@@ -1,6 +1,20 @@
 {
-    "192.168.68.1": {
-        "osmatch": {},
+    "scan": {
+        "osmatch": [
+            {
+                "name": "OpenWrt Chaos Calmeeeeeeeeer 15.05 (Linux 3.18) or Designated Driver (Linux 4.1 or 4.4)",
+                "accuracy": "100",
+                "line": "66735",
+                "osclass": {
+                    "type": "WAP",
+                    "vendor": "Linux",
+                    "osfamily": "Linux",
+                    "osgen": "4.X",
+                    "accuracy": "100"
+                },
+                "cpe": "cpe:/o:linux:linux_kernel:4.1"
+            }
+        ],
         "ports": [
             {
                 "protocol": "tcp",
@@ -62,20 +76,5 @@
             "reason": "arp-response",
             "reason_ttl": "0"
         }
-    },
-    "stats": {
-        "scanner": "nmap",
-        "args": "/usr/bin/nmap -oX - -Pn 192.168.68.1",
-        "start": "1608028214",
-        "startstr": "Tue Dec 15 11:30:14 2020",
-        "version": "7.70",
-        "xmloutputversion": "1.04"
-    },
-    "runtime": {
-        "time": "1608028217",
-        "timestr": "Tue Dec 15 11:30:17 2020",
-        "elapsed": "2.34",
-        "summary": "Nmap done at Tue Dec 15 11:30:17 2020; 1 IP address (1 host up) scanned in 2.34 seconds",
-        "exit": "success"
     }
 }
