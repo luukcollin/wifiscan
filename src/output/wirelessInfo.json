@@ -5,9 +5,9 @@
             "protocol": "IE: IEEE 802.11i/WPA2 Version 1\n",
             "authenticatie": "Authentication Suites (1) : PSK\n",
             "pairwiseChipper": "Group Cipher : CCMP\n",
-            "signalstrength": "Quality=50/70 Signal level=-60 dBm\n",
+            "signalstrength": "Quality=69/70 Signal level=-60 dBm\n",
             "externalIP": "82.785.745.46",
-            "password": "geen controle"
+            "password": "badp5tsafeass"
         }
     ]
 }

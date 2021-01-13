@@ -9,7 +9,7 @@ class PortsTable extends Component {
   };
 
   componentDidMount() {
-    this.setImageRandom();
+    this.setState({ img: icons[1] });
   }
   setImageRandom() {
     this.setState({ img: icons[Math.ceil(Math.random() * icons.length) - 1] });

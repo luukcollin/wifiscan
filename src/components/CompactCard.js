@@ -1,6 +1,14 @@
+/**
+ * @description The CompactCard is initially designed for Mobile Responsive purposes, due to the compact visual uses.
+ * Recommended usage is for when visuals like charts, tables, or images should be dipslayed for mobile (and/or browser).
+ *
+ * @author Luuk Goedhart
+ * @version 0.1
+ *
+ */
+
 import React, { Component } from "react";
 import { Row, Col, Container, Table } from "react-bootstrap";
-import PortsTable from "./PortsTable";
 
 const geslaagd = "./img/pass.png";
 const gezakt = "./img/fail.png";
@@ -9,6 +17,10 @@ class CompactCard extends Component {
   state = {
     img: this.props.geslaagd ? geslaagd : gezakt,
   };
+
+  /**
+   * Render the component
+   */
   render() {
     return (
       <div className="componentwidth">
@@ -20,31 +32,25 @@ class CompactCard extends Component {
               </div>
             </Col>
             <Col md={12}>
-              <h1>Title of compact card</h1>
+              <h1>
+                {this.props.title === undefined
+                  ? "Title of Card"
+                  : this.props.title}
+              </h1>
             </Col>
           </Row>
           <Row>
             <Col>
-              <div>{this.props.children}</div>
+              <div
+                style={{
+                  justifyContent: "center",
+                  textAlign: "center",
+                  alignItems: "center",
+                }}
+              >
+                {this.props.children}
+              </div>
             </Col>
-          </Row>
-          <Row>
-            <Col xs={10}>
-              <h3>Some info about compact card</h3>
-            </Col>
-          </Row>
-          <Row>
-            <div className="textarea">
-              <p>
-                Terrible information about not getting the right configurations
-                of your router. I'm personally so sorry for your settings, but
-                luckily... there is some good news!
-              </p>
-              <p>
-                Look here for your good news. It has come, the new start of a
-                much better world.
-              </p>
-            </div>
           </Row>
         </Container>
       </div>

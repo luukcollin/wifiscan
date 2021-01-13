@@ -7,7 +7,7 @@ class RealPasswordStrengthMeter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      percentage: 0,
+      percentage: this.props.percentage,
       color: "",
     };
   }
@@ -24,6 +24,10 @@ class RealPasswordStrengthMeter extends Component {
       // this.setState({ percentage: prevProps.percentage });
       this.setColor();
     }
+  }
+
+  componentDidMount() {
+    this.setColor();
   }
 
   setColor() {

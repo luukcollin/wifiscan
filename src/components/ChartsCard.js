@@ -11,7 +11,7 @@ class ChartsCard extends Component {
   renderReadMore() {
     return (
       <div className="stats">
-        <a href={this.props.readMoreLinkTo}>Read more...</a>
+        <a href={this.props.readMore}>Read more...</a>
       </div>
     );
   }
@@ -31,12 +31,11 @@ class ChartsCard extends Component {
                 {this.props.icon}
               </div>
             </Col>
-            <Col xs={10}>
+            <Col>
               <div className="numbers">
-                <span>{this.props.statsText}</span>
-                <p>
-                  <i>{this.props.description}</i>
-                </p>
+                <h2 className="cardTitle">{this.props.title}</h2>
+                {this.props.description}
+                {this.props.children}
               </div>
             </Col>
           </Row>
