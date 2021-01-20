@@ -13,8 +13,11 @@ import RealPasswordStrengthMeter from "./RealPasswordStrengthMeter";
 import wirelessInfo from "../output/wirelessInfo.json";
 import RealPassword from "../RealPassword";
 
+import gatewayDiscover from "../output/gatewaydiscover.json";
+
 const WEAK_SIGNAL = 30;
 const MEDIUM_SIGNAL = 70;
+const gatewayData = gatewayDiscover["scan"].osmatch[0];
 let passwordObject;
 class GeneralInfoCard extends Component {
   constructor(props) {
@@ -66,6 +69,7 @@ class GeneralInfoCard extends Component {
   /**
    * Render the component
    */
+
   render() {
     return (
       <div className="generalInfoCard">
@@ -77,6 +81,27 @@ class GeneralInfoCard extends Component {
         <div className="inline">
           <h2>Extern IP adres: </h2>
           <h2>{this.props.externalIP}</h2>
+        </div>
+        <div className="inline">
+          <h3>Routernaam: </h3>
+          <h3
+            style={{
+              display: "-webkit-flex",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+              textAlign: "end",
+              alignItems: "end",
+              overflowX: "scroll",
+              overflowY: "hidden",
+              marginLeft: 150,
+            }}
+          >
+            {gatewayData.name}
+          </h3>
+        </div>
+        <div className="inline">
+          <h3>Router Operating System: </h3>
+          <h3>{gatewayData.osclass.vendor}</h3>
         </div>
         <div className="inline">
           <h3>Apparaten op netwerk: </h3>

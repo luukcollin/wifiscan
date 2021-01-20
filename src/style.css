@@ -174,15 +174,30 @@ width:90%;
 }
 
 
-
-.layout {
+@media only screen and (min-width: 1920px) {
+.layout {  
+  
 background-image: url('./CWbackground.png');
+  
 width:100%;
 height: 100%;
 position: fixed;
 background-size: cover;
 background-position: center;
 overflow:scroll;
+
+}
+}
+@media only screen and (max-width: 1686px) {
+.layout{
+background-image:url('./CWbackgroundMobile.png') ;
+width:100%;
+height: 100%;
+position: fixed;
+background-size: cover;
+background-position: center;
+overflow:scroll;
+}
 }
 
 .list-item {
@@ -219,6 +234,7 @@ justify-content:space-between;
   padding-bottom: 25px;
   padding-left: 5px;
   padding-right: 5px;
+  max-width: 50rem;
 }
 
 
@@ -348,6 +364,7 @@ min-width:100%;
 width:100%;
 }
 
+@media only screen and (min-width: 1920px) {
 .sidemenu {
 background-color:blueviolet;
 float:left;
@@ -355,6 +372,12 @@ margin-left:0;
 margin-top:0;
 position:fixed;
 width:16%;
+z-index: 200;
+}
+
+}
+.sidemenu{
+  z-index: 200;
 }
 
 .stats {

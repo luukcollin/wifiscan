@@ -44,7 +44,7 @@ import {
   Bar,
   ResponsiveContainer,
 } from "recharts";
-import { Container, Row, Col, Table } from "react-bootstrap";
+import { Container, Row, Col, Table, Media } from "react-bootstrap";
 import { BrowserView, MobileView } from "react-device-detect";
 import OverallScore from "./OverallScore";
 
@@ -241,7 +241,7 @@ class Output extends Component {
   renderBrowser() {
     return (
       <div className="layout">
-        <div class="sidemenu">
+        <div class="sidemenu" zIndex={20}>
           <Navbar></Navbar>
         </div>
         <div className="container">
@@ -267,18 +267,29 @@ class Output extends Component {
                               alignItems: "center",
                               justifyContent: "center",
                               display: "flex",
+                              textAlign: "center",
+                              width: "100%",
                             }}
                           >
-                            <h2>Overall Security Score: </h2>
+                            <h2
+                              style={{
+                                whiteSpace: "nowrap",
+
+                                marginRight: 0,
+                                paddingRight: 0,
+                              }}
+                            >
+                              Overall Security Score:{" "}
+                            </h2>
 
                             <PieChart
-                              width={800}
+                              width={400}
                               height={400}
                               onMouseEnter={this.onPieEnter}
                             >
                               <Pie
                                 data={this.getPieChartData()}
-                                cx={400}
+                                cx={200}
                                 cy={200}
                                 startAngle={-270}
                                 endAngle={90}
@@ -313,45 +324,18 @@ class Output extends Component {
                             </PieChart>
                           </div>
                         </div>
-                        <Table className="bg-white text-dark">
-                          <thead>
-                            <tr>
-                              <th>Router Name</th>
-                              <th>Operating System</th>
-                              <th>Accuracy</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <div className="overflow">
-                                  {this.state.routerInfo.name}
-                                </div>
-                              </td>
-                              <td>
-                                <div className="overflow">
-                                  {this.state.routerInfo.os}
-                                </div>
-                              </td>
-                              <td>
-                                <div className="overflow">
-                                  {this.state.routerInfo.accuracy + "%"}
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </Table>
-                        <CompactCard geslaagd={false} title="Open poorten">
-                          <Table className="compact-card-component">
-                            <thead>
-                              <PortsTable
-                                thArray={["Port Nr", "Status", "Approval"]}
-                                tdArray={this.state.openPorts}
-                                services={this.state.services}
-                              ></PortsTable>
-                            </thead>
-                          </Table>
-                        </CompactCard>
+                      </Col>
+                      <Col>
+                        <GeneralInfoCard
+                          signalStrength={
+                            this.state.wirelessInfo.signalStrength
+                          }
+                          externalIP={this.state.wirelessInfo.externalIP}
+                          ssid={this.state.wirelessInfo.ssid}
+                          amountOfDevices={this.state.networkInfo.macs.length}
+                        />
+                      </Col>
+                      <Col>
                         <CompactCard
                           geslaagd={true}
                           title="Apparaten op netwerk"
@@ -376,17 +360,21 @@ class Output extends Component {
                             </Table>
                           </div>
                         </CompactCard>
+                        <CompactCard geslaagd={false} title="Open poorten">
+                          <Table className="compact-card-component">
+                            <thead>
+                              <PortsTable
+                                thArray={["Port Nr", "Status", "Approval"]}
+                                tdArray={this.state.openPorts}
+                                services={this.state.services}
+                              ></PortsTable>
+                            </thead>
+                          </Table>
+                        </CompactCard>
                       </Col>
-
+                    </Row>
+                    <Row>
                       <Col>
-                        <GeneralInfoCard
-                          signalStrength={
-                            this.state.wirelessInfo.signalStrength
-                          }
-                          externalIP={this.state.wirelessInfo.externalIP}
-                          ssid={this.state.wirelessInfo.ssid}
-                          amountOfDevices={this.state.networkInfo.macs.length}
-                        />
                         <CompactCard
                           geslaagd={
                             this.state.wirelessInfo.protection === "WPA2" ||
@@ -429,7 +417,7 @@ class Output extends Component {
                             </BarChart>
                           </ResponsiveContainer>
                           <InfoBox title="Toelichting">
-                            <p>
+                            <p style={{ fontSize: 15 }}>
                               Uw netwerk maakt gebruik van{" "}
                               {this.state.wirelessInfo.protection} encryptie.
                               WPA2 en WPA3 zijn de meest veilige soorten van
@@ -460,7 +448,7 @@ class Output extends Component {
                               </Col>
                               <Col xs={10}>
                                 <InfoBox title="">
-                                  <p>
+                                  <p style={{ fontSize: 15 }}>
                                     Chipper moet altijd geconfigureerd zijn als
                                     AES/CCMP in verband met beveiligingsrisico's
                                     (AES = CCMP)
@@ -471,9 +459,6 @@ class Output extends Component {
                           </ChartsCard>
                         </CompactCard>
                       </Col>
-                    </Row>
-                    <Row>
-                      <Col className="biplaneColumn"></Col>
                     </Row>
                   </Container>
                 </div>
