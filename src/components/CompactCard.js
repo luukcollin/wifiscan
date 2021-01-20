@@ -40,7 +40,7 @@ class CompactCard extends Component {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md={12}>
               <div
                 style={{
                   justifyContent: "center",

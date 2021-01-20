@@ -36,7 +36,7 @@ function Navbar() {
                   <BrowserRouter>
                     <Link to={item.path}>
                       {item.icon}
-                      <span>{item.title}</span>
+                      <span style={{ color: "#fefefe" }}>{item.title}</span>
                     </Link>
                   </BrowserRouter>
                 </li>

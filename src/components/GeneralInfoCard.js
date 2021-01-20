@@ -93,13 +93,14 @@ class GeneralInfoCard extends Component {
               ),
               fontSize: 33,
               fontWeight: "bold",
+              color: "#1dad13",
             }}
           >
             {this.getPercentage(this.props.signalStrength)} / 100
           </p>
           <p
             style={{
-              color: "grey",
+              color: "#4a4a4a",
             }}
           >
             <i>
@@ -108,7 +109,9 @@ class GeneralInfoCard extends Component {
           </p>
         </div>
         <div className="passwordstrength">
-          <h4 style={{ color: "white" }}>Wachtwoordsterkte: </h4>
+          <h4 style={{ color: "black" }}>
+            Wachtwoordsterkte van {this.props.ssid}:{" "}
+          </h4>
 
           <RealPasswordStrengthMeter
             percentage={this.getPasswordScore()}
@@ -124,7 +127,7 @@ class GeneralInfoCard extends Component {
           </a>
           {this.state.opened ? (
             <div className="passwordstrength">
-              <h4 style={{ color: "white" }}>
+              <h4 style={{ color: "black" }}>
                 Test de sterkte van een wachtwoord{" "}
               </h4>
 

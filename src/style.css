@@ -34,8 +34,9 @@ vertical-align:middle;
 }
 
 .bar {
-border:1px solid #f5f5f5;
+border:1.5px  solid rgba(0, 0, 0, 0.45);
 border-radius:30px;
+background-color: rgba(255, 255, 255, 0.6);
 height:30px;
 width:inherit;
 }
@@ -48,9 +49,9 @@ justify-content:space-evenly;
 }
 
 .card {
-background-color:darkblue;
+background-color:rgba(255, 255, 255, 0.45);
 border-radius:4px;
-box-shadow:0 1px 2px rgba(2,169,247,0.9), 0 0 0 1px rgba(2,87,122,0.3);
+box-shadow:0 1px 2px rgba(0,0,0,0.9), 0 0 0 1px rgba(2,87,122,0.3);
 margin-bottom:30px;
 }
 
@@ -68,9 +69,9 @@ min-height:64px;
 }
 
 .card:hover {
-background-color:blue;
+background-color:rgba(255, 255, 255, 0.9);
 border-radius:4px;
-box-shadow:0 1px 2px rgba(2,169,247,0.9), 0 0 0 1px rgba(2,87,122,0.3);
+
 margin-bottom:30px;
 }
 
@@ -85,10 +86,10 @@ margin-bottom:30px;
 }
 
 .compact-card {
-background-color:lightblue;
+background-color:rgba(255, 255, 255, 0.45);
 border-radius:5px;
-box-shadow:0 1px 2px rgba(2,169,247,0.9), 0 0 0 1px rgba(2,87,122,0.3);
-max-width:200px;
+box-shadow:0 2px 8px rgba(0,0,0,0.45), 0 0 0 1px rgba(2,87,122,0.3);
+min-width:200px;
 margin: 20px;
 }
 
@@ -114,17 +115,17 @@ min-width:400px;
 
 .componentwidth {
 
-max-width:50rem;
+
 
 }
 
 h4{
-  color: white;
+  color: black;
   font-size: 18px;
 }
 
 .container {
-background-color: black;
+
 float:right;
 min-height:100%;
 min-width:84%;
@@ -138,7 +139,7 @@ font-style:italic;
 }
 
 .filler-green {
-background:green;
+background: #1dad13;
 border-radius:inherit;
 height:100%;
 transition:width .2s ease-in;
@@ -152,7 +153,7 @@ transition:width .3s ease-in;
 }
 
 .filler-red {
-background:red;
+background:#f70000;
 border-radius:inherit;
 height:100%;
 transition:width .4s ease-in;
@@ -172,9 +173,16 @@ width:inherit;
 width:90%;
 }
 
+
+
 .layout {
-background-color:burlywood;
+background-image: url('./CWbackground.png');
 width:100%;
+height: 100%;
+position: fixed;
+background-size: cover;
+background-position: center;
+overflow:scroll;
 }
 
 .list-item {
@@ -194,7 +202,7 @@ justify-content:space-between;
   align-items: center;
   border-width: 1px;
   border-style: double;
-  border-color: rgba(255,255,255,0.9);
+  border-color: rgba(255,0,255,0.9);
   padding-bottom: 25px;
   padding-left: 5px;
   padding-right: 5px;
@@ -206,7 +214,8 @@ justify-content:space-between;
   justify-content: center;
   border-width: 1px;
   border-style: double;
-  border-color: rgba(255,255,255,0.9);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(5, 5, 5, 0.9);
   padding-bottom: 25px;
   padding-left: 5px;
   padding-right: 5px;
@@ -282,7 +291,7 @@ overflow:initial;
 .passwordstrength{
   display: inline-block;
 
-  background-color: inherit;
+
   width: 90%;
   margin-left: 6%;
   text-align: center;
@@ -335,7 +344,7 @@ color:blue;
 .sidebar {
 float:left;
 min-width:100%;
-position:relative;
+
 width:100%;
 }
 
@@ -344,7 +353,7 @@ background-color:blueviolet;
 float:left;
 margin-left:0;
 margin-top:0;
-position:absolute;
+position:fixed;
 width:16%;
 }
 
@@ -353,10 +362,10 @@ color:#a9a9a9;
 }
 
 .textarea {
-background-color:black;
-border:lightseagreen;
+background-color:rgba(255, 255, 255, .9);
+border:rgba(0, 0, 0, 0.45);
 border-style:groove;
-border-width:2px;
+border-width:1px;
 display: flex;
 margin:6px;
 padding-left: 5px;
@@ -393,9 +402,9 @@ width:30px;
 }
 
 header {
-background-color:black;
+background-color:rgba(255,255,255,.45);
 text-align:center;
-width:100%;
+width:110%;
 }
 
 header img {
@@ -420,18 +429,19 @@ padding-top:1.5%;
 }
 
 p,h1,h2,h3,span {
-color:#fffff0;
+color:black;
+
 }
 
 text {
-color:#fffff0;
-fill:rgba(255,255,255,0.9);
+
+fill:rgba(0,0,0,0.9);
 font-size:12px;
 font-weight:lighter;
 }
 
 text tspan {
-color:#fffff0;
+color: black;
 
 }
 
