@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
@@ -12,12 +12,22 @@ import reportWebVitals from "./reportWebVitals";
 import RealNetwork from "./RealNetwork";
 import Laadscherm from "./Laadscherm";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Laadscherm />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+class index extends Component {
+  state = {};
+  render() {
+    return (
+      (
+        <div>
+          <Laadscherm />
+          <RealNetwork />
+        </div>
+      ),
+      document.getElementById("root")
+    );
+  }
+}
+
+export default index;
 
 // <BrowserRouter>
 //      <Route exact path="/" component={Redir} />

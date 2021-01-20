@@ -5,7 +5,14 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Redir from "./Redir";
 import MyWindowPortal from "./MyWindowPortal";
 
+import TextLoop from "react-text-loop";
+import networkDiscover from "./output/networkdiscover.json";
+import gatewayDiscover from "./output/gatewaydiscover.json";
+import wirelessInfo from "./output/wirelessinfo.json";
+
 import "./style.css";
+
+const ALL_FILES = [networkDiscover, gatewayDiscover, wirelessInfo];
 
 class Laadscherm extends Component {
   state = {
@@ -14,7 +21,7 @@ class Laadscherm extends Component {
 
   constructor(props) {
     super(props);
-    this.repeat();
+    this.fileIsFilled(networkDiscover);
   }
 
   repeat() {
@@ -25,22 +32,15 @@ class Laadscherm extends Component {
     this.state.filesFound = true;
   }
 
-  jsonFileExists = (path) => {
-    console.log(path);
-    var http = new XMLHttpRequest();
-    http.open("HEAD", path, false);
-    http.send();
-    return http.status != 404;
+  fileIsFilled = (file) => {
+    if ("initkey" in file) {
+      console.log("DIT IS NOG INITFILE");
+    }
   };
 
   jsonOutputIsLoaded() {
-    var files = [
-      "./img/networkdiscover.json",
-      "./img/gatewaydiscover.json",
-      "./img/wirelessinfo.json",
-    ];
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i];
+    for (var i = 0; i < ALL_FILES.length; i++) {
+      var file = ALL_FILES[i];
       if (!this.jsonFileExists(file)) {
         console.log("work" + i);
         return false;
@@ -64,12 +64,14 @@ class Laadscherm extends Component {
   render() {
     return (
       <div>
-        <div>{this.showMessage()}</div>
-        <div>{this.navigate()}</div>
-        <h1> Scans worden momenteel uitgevoerd </h1>
+        <div></div>
+        <div></div>
         <img src="/img/laadicoon.png"></img>
-        <h2> Een ogenblik geduld alstublieft </h2>
-        <h3> 'Dynamische tekst, scans die worden uitgevoerd' </h3>
+        <TextLoop>
+          <h1> Scans worden momenteel uitgevoerd </h1>
+          <h2> Een ogenblik geduld alstublieft </h2>
+          <h3> 'Dynamische tekst, scans die worden uitgevoerd' </h3>
+        </TextLoop>
       </div>
     );
   }
